@@ -9,7 +9,7 @@ impute_within_study_sd(s, n)
 \arguments{
 \item{s}{A matrix with within-study standard deviations having missing values}
 
-\item{y}{A matrix with effect sizes}
+\item{n}{A vector of sample size on each arm}
 }
 \value{
 A matrix with imputed within-study standard deviations no missing values

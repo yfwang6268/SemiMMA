@@ -10,6 +10,8 @@ estimating_function(param, subset_data, j)
 \item{param}{A vector of parameters in the selection model}
 
 \item{subset_data}{A matrix with the subset data D_j contains effect size and standard deviations}
+
+\item{j}{index for outcome j}
 }
 \value{
 A matrix with estimating function values

@@ -43,10 +43,12 @@ probability_of_observation <- function(s_i, y_i, alpha_j, beta_j, gamma_j){
 #' Evaluates the estimating functions for a semiparametric selection model, facilitating the estimation of parameters that mitigate outcome reporting bias in multivariate meta-analysis.
 #' @param param A vector of parameters in the selection model
 #' @param subset_data A matrix with the subset data D_j contains effect size and standard deviations
+#' @param j index for outcome j
 #' @return A matrix with estimating function values
 #' @export
 estimating_function <- function(param, subset_data, j){
   nos <- nrow(subset_data)
+  J <- ncol(subset_data)/3
   temp_y <- subset_data[,1:J]
   temp_s <- subset_data[,J+1:J]
   temp_theta <- subset_data[,2*J+1:J]
@@ -110,9 +112,9 @@ one_step_update <- function(outcome_parameter, y, s){
 
 
 
-  init_phi <- c(runif(1,-1,1), # alpha
-                runif(J,-1,1), # beta
-                runif(J,-1,1)) # gamma1
+  init_phi <- c(stats::runif(1,-1,1), # alpha
+                stats::runif(J,-1,1), # beta
+                stats::runif(J,-1,1)) # gamma1
 
 
 
@@ -130,7 +132,7 @@ one_step_update <- function(outcome_parameter, y, s){
       sim_theta <- MASS::mvrnorm(n = nos, mu = c(current_mu), Sigma=current_sigma)
       temp_subset_data <-  construct_subsets(y, s, sim_theta, j)
       temp_res <- estimating_function(init_phi, temp_subset_data, j)
-      temp_res_cov <-  cov(temp_res)
+      temp_res_cov <-  stats::cov(temp_res)
       diag(temp_res_cov) <- diag(temp_res_cov) + 1e-6
       gmm_estimating <- local({
         j_local <- j
@@ -143,7 +145,7 @@ one_step_update <- function(outcome_parameter, y, s){
                                warning = function(w){warn_msg <<- 1})
 
     }
-    temp_phi <- coef(temp_gmm_res)
+    temp_phi <- stats::coef(temp_gmm_res)
     alpha[j] <- temp_phi[1]
     beta[,j] <- temp_phi[1+1:J]
     gamma[,j] <- temp_phi[1+J+1:J]
@@ -226,8 +228,8 @@ one_step_update <- function(outcome_parameter, y, s){
 #' Impute missing within-study standard deviations
 #'
 #'
-#' @param y A matrix with effect sizes
 #' @param s A matrix with within-study standard deviations having missing values
+#' @param n A vector of sample size on each arm
 #' @return A matrix with imputed within-study standard deviations no missing values
 #' @export
 
@@ -249,15 +251,14 @@ impute_within_study_sd <- function(s, n){
 #' Fits a semiparametric model  using an iterative optimization approach.
 #' @param y A matrix with effect sizes
 #' @param s A matrix with within-study standard deviations
+#' @param n A vector of sample size on each arm
 #' @return A vector contains estimated mu and the standard deviations
 #' @export
-SemiMMA <- function(y, s){
-  if (sum(is.na(s)) > 0)
-    stop("Within-study sd matrix have NA. Please impute missing value first.")
-
+SemiMMA <- function(y, s, n){
+  s <- impute_within_study_sd(s, n)
   J = ncol(y)
   mean_s = colMeans(s)
-  temp_var = apply(y, 2, var, na.rm=T)
+  temp_var = apply(y, 2, stats::var, na.rm=T)
   init_tau = numeric(J)
   for(j in 1:J){
     init_tau[j] = ifelse(temp_var[j] > mean_s[j]^2,
@@ -274,10 +275,8 @@ SemiMMA <- function(y, s){
       count_index = count_index + 1
     }
   }
-  init_para = c(init_mu, init_tau, init_rhoB, rep(runif(1),J))
+  init_para = c(init_mu, init_tau, init_rhoB, rep(stats::runif(1),J))
 
-  # temp_res = SQUAREM::squarem(par = init_para, fixptfn= one_step_update,  y = y, s = s,
-  #                 control = list(tol = 1e-4, maxiter = 100))
   temp_res = tryCatch(SQUAREM::squarem(par = init_para, fixptfn= one_step_update,  y = y, s = s,
                                        control = list(tol = 1e-4, maxiter = 100)),
                       error=function(e){NA})
@@ -291,3 +290,5 @@ SemiMMA <- function(y, s){
   }
   return(c(temp_mu,temp_se))
 }
+
+

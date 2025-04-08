@@ -4,12 +4,14 @@
 \alias{SemiMMA}
 \title{Fit Semiparametric Multivariate Meta-Analysis Model}
 \usage{
-SemiMMA(y, s)
+SemiMMA(y, s, n)
 }
 \arguments{
 \item{y}{A matrix with effect sizes}
 
 \item{s}{A matrix with within-study standard deviations}
+
+\item{n}{A vector of sample size on each arm}
 }
 \value{
 A vector contains estimated mu and the standard deviations

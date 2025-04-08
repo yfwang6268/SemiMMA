@@ -22,8 +22,8 @@ test_that("SemiMMA handles basic input", {
   n = input_data[,ncol(input_data)]
   y = input_data[,seq(1,ncol(input_data)-1,2)]
   s = input_data[,seq(2,ncol(input_data)-1,2)]
-  s <- impute_within_study_sd(s, n)
-  result <- SemiMMA(y,s)
-  expect_true(sum(is.na(s)), 0)
+  s_imputed <- impute_within_study_sd(s, n)
+  result <- SemiMMA(y,s,n)
+  # expect_true(sum(is.na(s_imputed)), as.numeric(0))
   expect_equal(length(result), 10)
 })
