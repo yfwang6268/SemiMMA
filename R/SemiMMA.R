@@ -292,12 +292,9 @@ SemiMMA <- function(input_data){
   
   semiMMA_res <- SemiMMA_fit(y, s)
 
+
   
-  result <- data.frame()
-  result$estimates <- semiMMA_res[1:J]
-  result$sd <- semiMMA_res[J+1:J]
-  
-  return(result)
+  return(semiMMA_res)
   
 }
 
