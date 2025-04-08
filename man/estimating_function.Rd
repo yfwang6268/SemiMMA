@@ -4,7 +4,7 @@
 \alias{estimating_function}
 \title{Compute Estimating Functions for Selection Model}
 \usage{
-estimating_function(param, subset_data)
+estimating_function(param, subset_data, j)
 }
 \arguments{
 \item{param}{A vector of parameters in the selection model}

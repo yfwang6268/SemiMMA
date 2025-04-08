@@ -7,11 +7,11 @@
 one_step_update(outcome_parameter, y, s)
 }
 \arguments{
+\item{outcome_parameter}{A vector with previous parameters}
+
 \item{y}{A matrix with effect sizes}
 
 \item{s}{A matrix with standard deviations}
-
-\item{outcome_paramete}{A vector with previous parameters}
 }
 \value{
 A vector with updated parameters

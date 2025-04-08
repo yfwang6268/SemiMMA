@@ -2,16 +2,18 @@
 % Please edit documentation in R/SemiMMA.R
 \name{SemiMMA}
 \alias{SemiMMA}
-\title{Semiparametric Multivariate Meta-Analysis}
+\title{Fit Semiparametric Multivariate Meta-Analysis Model}
 \usage{
-SemiMMA(input_data)
+SemiMMA(y, s)
 }
 \arguments{
-\item{data}{A matrixwith effect sizes and standard deviations in alternating columns, one study for each row}
+\item{y}{A matrix with effect sizes}
+
+\item{s}{A matrix with within-study standard deviations}
 }
 \value{
-A matrix with estimates of effect sizes and standard deviations for each outcome  per row
+A vector contains estimated mu and the standard deviations
 }
 \description{
-Conducts a semiparametric multivariate meta-analysis to estimate effect sizes and standard deviations.
+Fits a semiparametric model  using an iterative optimization approach.
 }
