@@ -290,7 +290,7 @@ SemiMMA <- function(input_data){
     s[temp_missing_row, j] = sqrt(1/(temp_k*n[temp_missing_row]))
   }
   
-  semiMMA_res <- semiMMA_fit(y, s)
+  semiMMA_res <- SemiMMA_fit(y, s)
 
   
   result <- data.frame()
