@@ -252,6 +252,9 @@ impute_within_study_sd <- function(s, n){
 #' @return A vector contains estimated mu and the standard deviations
 #' @export
 SemiMMA <- function(y, s){
+  if (sum(is.na(s)) > 0)
+    stop("Within-study sd matrix have NA. Please impute missing value first.")
+
   J = ncol(y)
   mean_s = colMeans(s)
   temp_var = apply(y, 2, var, na.rm=T)
