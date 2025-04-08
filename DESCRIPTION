@@ -1,0 +1,12 @@
+Package: SemiMMA
+Title: Semiparametric Multivariate Meta-Analysis
+Version: 0.1.0
+Author: Yifei Wang <ywang9@smu.edu>; Lifeng Lin <lifenglin@arizona.edu>; Yulun Liu <Yulun.Liu@UTSouthwestern.edu>
+Maintainer: Yifei Wang <ywang9@smu.edu>
+Description: A package to mitigate outcome reporting bias in multivariate meta-analysis using a semiparametric and scalable approach.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 3.5.0)
+Imports: MASS, matrixcalc, Matrix, gmm, SQUAREM
+RoxygenNote: 7.2.1
