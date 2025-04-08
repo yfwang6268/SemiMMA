@@ -3,5 +3,6 @@
 export(SemiMMA)
 export(construct_subsets)
 export(estimating_function)
+export(impute_within_study_sd)
 export(one_step_update)
 export(probability_of_observation)

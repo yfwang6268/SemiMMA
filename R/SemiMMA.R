@@ -223,6 +223,14 @@ one_step_update <- function(outcome_parameter, y, s){
   return(update_output_parameter)
 }
 
+#' Impute missing within-study standard deviations
+#'
+#'
+#' @param y A matrix with effect sizes
+#' @param s A matrix with within-study standard deviations having missing values
+#' @return A matrix with imputed within-study standard deviations no missing values
+#' @export
+
 impute_within_study_sd <- function(s, n){
   imputed_s = s
   J <- ncol(s)
