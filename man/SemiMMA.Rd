@@ -14,7 +14,7 @@ SemiMMA(y, s, n)
 \item{n}{A vector of sample size on each arm}
 }
 \value{
-A vector contains estimated mu and the standard deviations
+A vector contains estimated effect size and the standard deviations
 }
 \description{
 Fits a semiparametric model  using an iterative optimization approach.

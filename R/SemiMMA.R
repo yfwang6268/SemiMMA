@@ -252,7 +252,7 @@ impute_within_study_sd <- function(s, n){
 #' @param y A matrix with effect sizes
 #' @param s A matrix with within-study standard deviations
 #' @param n A vector of sample size on each arm
-#' @return A vector contains estimated mu and the standard deviations
+#' @return A vector contains estimated effect size and the standard deviations
 #' @export
 SemiMMA <- function(y, s, n){
   s <- impute_within_study_sd(s, n)
@@ -288,7 +288,10 @@ SemiMMA <- function(y, s, n){
     temp_mu = temp_res$par[1:J]
     temp_se = temp_res$par[2*J+J*(J-1)/2 + 1:J]
   }
-  return(c(temp_mu,temp_se))
+  result = c(temp_mu,temp_se)
+  names(result) = c(paste("effect_size", 1:J, sep=""),
+                    paste("sd", 1:J, sep=""))
+  return(result)
 }
 
 
