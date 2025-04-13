@@ -1,14 +1,23 @@
 Package: SemiMMA
 Title: Semiparametric Multivariate Meta-Analysis
-Version: 0.1.0
-Authors@R: person("Yifei", "Wang", email = "xawangyifei@hotmail.com", role = c("aut", "cre"))
-Description: A package to mitigate outcome reporting bias in multivariate meta-analysis using a semiparametric and scalable approach.
-License: MIT
+Version: 0.0.0.9000
+Authors@R: c(
+    person(given = "Yifei", family = "Wang", email ="ywang9@smu.edu", role = c("aut", "cre")),
+    person(given = "Lifeng", family = "Lin", email ="lifenglin@arizona.edu", role = "aut"),
+    person(given = "Yu-lun", family = "Liu", email ="Yulun.Liu@UTSouthwestern.edu", role = "aut")
+    )
+Description: an R package for performing Semiparametric multivariate meta-analysis to mitigate outcome reporting bias. It uses a scalable approach with selection models and iterative parameter updates, integrating generalized method of moments (GMM) and inverse propensity weighting (IPW) for robust estimation.
+License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
-Depends: R (>= 3.5.0)
-Imports: MASS, matrixcalc, Matrix, gmm, SQUAREM
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
+Depends: 
+    R (>= 3.5.0)
+Imports: 
+    MASS,
+    matrixcalc,
+    Matrix,
+    gmm,
+    SQUAREM
 Suggests: 
-    testthat (>= 3.0.0)
-Config/testthat/edition: 3
+    testthat
