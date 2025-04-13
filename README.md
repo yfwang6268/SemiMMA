@@ -34,7 +34,7 @@ library(SemiMMA)
 
 # Sample data: effect sizes, standard deviations, and sample sizes
 # Ref: https://doi.org/10.1002/14651858.CD007044.pub4
-data_matrix <- read.csv("sample_data.csv")
+data(data_matrix, package = "SemiMMA")
 
 # Prepare data
 n <- data_matrix[, ncol(data_matrix)]
