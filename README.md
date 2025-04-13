@@ -50,5 +50,9 @@ result <- SemiMMA(y, s)
 print(result)
 ```
 
+## Reference
+
+- Setthawong, V., Srisubat, A., Potisat, S., Lojanapiwat, B., & Pattanittum, P. (2023). Extracorporeal shock wave lithotripsy (ESWL) versus percutaneous nephrolithotomy (PCNL) or retrograde intrarenal surgery (RIRS) for kidney stones. *Cochrane Database of Systematic Reviews*, 2023(8), CD007044. [https://doi.org/10.1002/14651858.CD007044.pub4](https://doi.org/10.1002/14651858.CD007044.pub4)
+
 
 
