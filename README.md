@@ -1,6 +1,6 @@
 # SemiMMA: Semiparametric Multivariate Meta-Analysis
 
-**SemiMMA** is an R package for performing Semiparametric multivariate meta-analysis to mitigate outcome reporting bias. It uses a scalable approach with selection models and iterative parameter updates, integrating packages like `MASS`, `matrixcalc`, `Matrix`, `gmm`, and `SQUAREM` for robust estimation.
+**SemiMMA** is an R package for performing Semiparametric multivariate meta-analysis to mitigate outcome reporting bias. It uses a scalable approach with selection models and iterative parameter updates, integrating generalized method of moments (GMM) and inverse propensity weighting (IPW) for robust estimation.
 
 ## Dependencies
 
