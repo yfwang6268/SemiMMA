@@ -11,7 +11,7 @@ The `SemiMMA` package requires the following R packages and version:
 - **matrixcalc** - For matrix operations
 - **Matrix** - For sparse and dense matrix support
 - **gmm** - For generalized method of moments estimation
-- **SQUAREM** - For squared extrapolation methods
+- **SQUAREM** - For iterative parameter updates
 
 ## Installation
 
